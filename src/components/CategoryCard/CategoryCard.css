@@ -1,0 +1,12 @@
+.category-card {
+    border: 1px solid #831515;
+    border-radius: 30px;
+    padding: 1.6rem;
+    width: 200px;
+    cursor: pointer;
+}
+
+.category-name {
+    color: #831515;
+    text-transform: uppercase;
+}
