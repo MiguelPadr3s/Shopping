@@ -1,6 +1,7 @@
 import React from "react";
 import "./CartContainer.css";
 import Item from "./Item"
+import Summary from "./Summary";
 
 const CartContainer = () => {
   return (
@@ -9,8 +10,11 @@ const CartContainer = () => {
       <div className="cart-container">
         <div className="cart-items">
           <Item/>
+          <Item/>
+          <Item/>
+          <Item/>
         </div>
-        <div className="summary"></div>
+        <Summary/>
       </div>
     </div>
   );
