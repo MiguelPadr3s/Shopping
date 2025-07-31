@@ -1,4 +1,6 @@
 .product-list {
     display: flex;
+    flex-wrap: wrap; /* 🔧 This enables wrapping */
     gap: 20px;
+    justify-content: center; /* optional: centers cards */
 }
