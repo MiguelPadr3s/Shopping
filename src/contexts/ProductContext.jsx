@@ -1,41 +1,46 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const ProductContext = createContext();
 
-export const ProductProvider = () => {
+export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = usestate(false);
+  const [loading, setLoading] = useState(false);
 
   const { category } = useParams();
+
+  console.log(products);
 
   const getProducts = async (category) => {
     try {
       setLoading(true);
       let url = "https://fakestoreapi.com/products";
       if (category) {
-        url += `/category/${category}/?limit=4`;
+        url += `/category/${category}?limit=4`;
       } else {
         url += "?limit=4";
       }
       const res = await fetch(url);
       if (res.ok) {
+        const data = await res.json();
         setProducts(data);
         setLoading(false);
       }
     } catch (error) {
       console.error(error);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
 
-  useEffect(()=>{
-    getProducts(category)
-  },[category])
+  useEffect(() => {
+    getProducts(category);
+  }, [category]);
 
   return (
-    <ProductContext.Provider value={{ products, loading }}>ProductContext</ProductContext.Provider>
+    <ProductContext.Provider value={{ products, loading }}>
+      {children}
+    </ProductContext.Provider>
   );
 };
 
