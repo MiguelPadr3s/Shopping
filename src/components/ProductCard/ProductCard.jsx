@@ -2,11 +2,11 @@ import React from "react";
 import {TbPlus} from "react-icons/tb"
 import "./ProductCard.css"
 
-const ProductCard = () => {
+const ProductCard = ({product}) => {
   return (
     <div className="card-container">
       <div className="card-image">
-        <img src="" alt="prduct image"/>
+        <img src={product.image} alt="prduct image"/>
       </div>
       <div className="card-detail">
         <h4 className="card-title">this is title</h4>
