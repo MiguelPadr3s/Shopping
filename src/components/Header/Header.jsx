@@ -1,8 +1,10 @@
 import "./Header.css";
 import { TbSearch, TbShoppingBagSearch, TbShoppingCart } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import { useCart } from "../../contexts/CartContext";
 
 const Header = () => {
+  const { cartItems } = useCart();
   return (
     <div className="header">
       <Link to="/">
@@ -23,7 +25,7 @@ const Header = () => {
         <Link to="/cart">
           <div className="cart">
             <TbShoppingCart className="cart-icon" />
-            <span>0</span>
+            <span>{cartItems.length}</span>
           </div>
         </Link>
       </div>

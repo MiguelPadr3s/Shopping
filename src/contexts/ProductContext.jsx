@@ -9,8 +9,6 @@ export const ProductProvider = ({ children }) => {
 
   const { category } = useParams();
 
-  console.log(products);
-
   const getProducts = async (category) => {
     try {
       setLoading(true);
