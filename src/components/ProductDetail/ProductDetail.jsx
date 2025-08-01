@@ -5,7 +5,7 @@ import useGetProduct from "../../hooks/useGetProduct";
 import { useCart } from "../../contexts/CartContext";
 
 const ProductDetail = () => {
-  const { product } = useGetProduct();
+  const { product, loading } = useGetProduct();
   const { addToCart } = useCart();
 
   // add to cart
@@ -15,25 +15,43 @@ const ProductDetail = () => {
   return (
     <div className="product-container">
       <div className="product-image">
-        <img src={product.image} alt={product.title} />
+        {loading ? (
+          <div className="product-image-skeleton"></div>
+        ) : (
+          <img src={product.image} alt={product.title} />
+        )}
       </div>
       <div className="product-detail">
-        <div className="product-category">{product.category}</div>
-        <h1 className="product-title">{product.title}</h1>
-        <div className="product-rating">
-          <div className="product-rating-star">★</div>
-          <span>{product.rating?.rate}</span>
-          <span>{product.rating?.count} review</span>
-        </div>
-        <div className="product-description">{product.description}</div>
-        <div className="product-price">${product.price}</div>
-
-        <div className="product-buttons">
-          <div className="product-btn" onClick={() => handleAdd(product)}>
-            Add to Cart
+        {loading ? (
+          <div className="product-detail-skeleton">
+            <div className="product-skeleton"></div>
+            <div className="product-skeleton"></div>
+            <div className="product-skeleton"></div>
+            <div className="product-skeleton"></div>
+            <div className="product-skeleton"></div>
+            <div className="product-skeleton"></div>
+            <div className="product-skeleton"></div>
           </div>
-          <div className="product-btn buy-btn">Buy Now!</div>
-        </div>
+        ) : (
+          <>
+            <div className="product-category">{product.category}</div>
+            <h1 className="product-title">{product.title}</h1>
+            <div className="product-rating">
+              <div className="product-rating-star">★</div>
+              <span>{product.rating?.rate}</span>
+              <span>{product.rating?.count} review</span>
+            </div>
+            <div className="product-description">{product.description}</div>
+            <div className="product-price">${product.price}</div>
+
+            <div className="product-buttons">
+              <div className="product-btn" onClick={() => handleAdd(product)}>
+                Add to Cart
+              </div>
+              <div className="product-btn buy-btn">Buy Now!</div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const useGetProduct = () => {
 
   const getProduct = async (id) => {
     try {
-      setLoading(false);
+      setLoading(true);
       const res = await fetch(`https://fakestoreapi.com/products/${id}`);
       if (res.ok) {
         const data = await res.json();
