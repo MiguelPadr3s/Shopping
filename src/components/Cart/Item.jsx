@@ -1,9 +1,15 @@
 import React from "react";
 import { TbMinus, TbPlus, TbX } from "react-icons/tb";
+import { motion } from "framer-motion";
 
 const Item = ({ item, handleRemove, handleAdd, handleRemoveQuantity }) => {
   return (
-    <div className="item-detail">
+    <motion.div
+      className="item-detail"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.3, duration: 2 }}
+    >
       <div className="item-info">
         <div className="item-image">
           <img src={item.image} alt={item.title} />
@@ -19,7 +25,7 @@ const Item = ({ item, handleRemove, handleAdd, handleRemoveQuantity }) => {
       <div className="item-remove" onClick={() => handleRemove(item.id)}>
         <TbX />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

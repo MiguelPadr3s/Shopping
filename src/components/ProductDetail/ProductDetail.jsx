@@ -1,19 +1,25 @@
 import React from "react";
 import "./ProductDetail.css";
-import { useParams } from "react-router-dom";
 import useGetProduct from "../../hooks/useGetProduct";
 import { useCart } from "../../contexts/CartContext";
+import {motion} from "framer-motion";
 
 const ProductDetail = () => {
   const { product, loading } = useGetProduct();
   const { addToCart } = useCart();
+  
 
   // add to cart
   const handleAdd = (product) => {
     addToCart(product);
   };
   return (
-    <div className="product-container">
+    <motion.div 
+      className="product-container"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay:0.3, duration: 2 }}
+    >
       <div className="product-image">
         {loading ? (
           <div className="product-image-skeleton"></div>
@@ -53,7 +59,7 @@ const ProductDetail = () => {
           </>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

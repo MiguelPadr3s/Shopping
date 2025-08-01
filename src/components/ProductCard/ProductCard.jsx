@@ -3,6 +3,7 @@ import { TbPlus } from "react-icons/tb";
 import "./ProductCard.css";
 import { useCart } from "../../contexts/CartContext";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
@@ -11,7 +12,12 @@ const ProductCard = ({ product }) => {
     addToCart(product);
   };
   return (
-    <div className="card-container">
+    <motion.div
+      className="card-container"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 2 }} //2sec
+    >
       <div className="card-image">
         <img src={product.image} alt="prduct image" />
       </div>
@@ -28,7 +34,7 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

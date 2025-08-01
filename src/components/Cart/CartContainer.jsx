@@ -4,6 +4,7 @@ import Item from "./Item";
 import Summary from "./Summary";
 import { useCart } from "../../contexts/CartContext";
 import { BsCart4 } from "react-icons/bs";
+import { motion } from "framer-motion";
 
 const CartContainer = () => {
   const { cartItems, removeFromCart, addToCart, removeQuantity } = useCart();
@@ -24,7 +25,12 @@ const CartContainer = () => {
   };
 
   return (
-    <div className="cart-wrapper">
+    <div 
+      className="cart-wrapper"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 2 }}
+    >
       <h2 className="section-title">Shopping Cart</h2>
       <div className="cart-container">
         {cartItems && cartItems.length > 0 ? (

@@ -6,7 +6,7 @@ const useGetCategories = () => {
 
   const getCategories = async () => {
     try {
-      setLoading(true);
+      setLoading(false);
       const res = await fetch("https://fakestoreapi.com/products/categories");
       if (res.ok) {
         const data = await res.json();
