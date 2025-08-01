@@ -6,7 +6,7 @@ const Item = ({ item, handleRemove, handleAdd, handleRemoveQuantity }) => {
     <div className="item-detail">
       <div className="item-info">
         <div className="item-image">
-          <img src="" alt="cart product image" />
+          <img src={item.image} alt={item.title} />
         </div>
         <div className="item-title">{item.title}</div>
       </div>
